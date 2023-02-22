@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Route, Routes} from "react-router-dom"
 import {MainLayout} from "./layouts";
-import {MoviesPage} from "./pages";
+import {MovieDataPage, MoviesPage} from "./pages";
 
 
 
@@ -12,6 +12,7 @@ const App = () => {
             <Route path={'/'} element={<MainLayout/>}>
 
                 <Route path={'movies'} element={<MoviesPage/>}/>
+                <Route path={'movies/:movieId'} element={<MovieDataPage/>}/>
 
 
             </Route>

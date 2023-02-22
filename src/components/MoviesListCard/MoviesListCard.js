@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {moviesService} from "../../services/moviesService";
 
-const MoviesListCard = () => {
+const MoviesListCard = ({movieId}) => {
+
+    const [movie,setMovie]=useState()
+
+    useEffect(()=>{
+        moviesService.getById(movieId).then(({data})=>setMovie(data))
+    },[])
+
+
     return (
         <div>
-            MoviesListCard
+            {JSON.stringify(movie)}
         </div>
     );
 };

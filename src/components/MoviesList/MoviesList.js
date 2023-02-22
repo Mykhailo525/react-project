@@ -4,13 +4,13 @@ import {moviesActions} from "../../redux";
 import {useSearchParams} from "react-router-dom";
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 
+
 const MoviesList = () => {
 
 
-    const{movies,prev,next}=useSelector(state => state.movies)
+    const{movies,page}=useSelector(state => state.movies)
     const dispatch=useDispatch()
     const[query,setQuery]=useSearchParams({page:'1'})
-
 
 
     useEffect(()=>{
@@ -18,11 +18,13 @@ const MoviesList = () => {
     },[dispatch,query])
 
 
+
+
     return (
         <div>
             <div>
-                <button disabled={!prev} onClick={()=>setQuery(query=>({page:+query.get('page')-1}))}>prev</button>
-                <button disabled={!next} onClick={()=>setQuery(query=>({page:+query.get('page')+1}))}>next</button>
+                <button disabled={page===1} onClick={()=>setQuery(query=>({page:+query.get('page')-1}))}>prev</button>
+                <button disabled={page===500} onClick={()=>setQuery(query=>({page:+query.get('page')+1}))}>next</button>
             </div>
 
             {movies.map((movie,index)=><MovieInfo key={index+1} movie={movie}/>)}
