@@ -1,9 +1,9 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {moviesService} from "../../services/moviesService";
+import {moviesService} from "../../services";
 
 const initialState={
     movies:[],
-    page:1,
+    page: 1,
     selectedMovie:null
 }
 

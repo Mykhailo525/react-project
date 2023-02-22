@@ -10,9 +10,15 @@ const MoviesListCard = ({movieId}) => {
     },[])
 
 
+
     return (
         <div>
-            {JSON.stringify(movie)}
+            {movie && <div>
+                <div>
+                    <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="" className={'movie__poster'}/>
+                    <p>{movie.overview}</p>
+                </div>
+            </div>}
         </div>
     );
 };

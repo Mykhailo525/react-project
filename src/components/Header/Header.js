@@ -8,7 +8,8 @@ const Header = () => {
     return (
         <div className={css.Header}>
             <div>
-                <Link to={'/movies'}>movies</Link>
+                <Link to={'/'}>movies</Link>
+                <Link to={''}>Genres</Link>
             </div>
         </div>
     );
