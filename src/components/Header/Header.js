@@ -9,7 +9,6 @@ const Header = () => {
         <div className={css.Header}>
             <div>
                 <Link to={'/'}>movies</Link>
-                <Link to={''}>Genres</Link>
             </div>
         </div>
     );

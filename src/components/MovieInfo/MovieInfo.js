@@ -19,7 +19,7 @@ const navigate=useNavigate()
                 <div>original_title :{original_title}</div>
             </div>
 
-            <button onClick={()=>navigate(id.toString())}>Movie info</button>
+            {/*<button onClick={()=>navigate(id.toString())}>Movie info</button>*/}
            {/*<Link to={id.toString()}>Movie info</Link>*/}
         </div>
     );

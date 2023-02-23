@@ -3,9 +3,7 @@ import {moviesService} from "../../services";
 
 const initialState={
     movies:[],
-    page: 1,
-
-    selectedMovie:null
+    total_pages:1
 }
 
 const getAll=createAsyncThunk(
@@ -14,7 +12,7 @@ const getAll=createAsyncThunk(
         try {
             const {data}=await moviesService.getAll(page)
             return data
-            console.log(data);
+
         }catch (e) {
             return rejectedWithValue(e.response.data)
         }
@@ -30,10 +28,9 @@ const moviesSlice=createSlice({
     extraReducers:builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                const {page, results} = action.payload
+                const {results,total_pages} = action.payload
                 state.movies = results
-                state.page = page
-
+                state.total_pages=total_pages
             })
 })
 
