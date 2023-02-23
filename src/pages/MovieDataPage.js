@@ -1,12 +1,15 @@
 import React from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {MoviesListCard} from "../components";
 
 const MovieDataPage = () => {
-    const {movieId}=useParams()
+
+    const{movieId}=useParams()
+
+
     return (
         <div>
-            <MoviesListCard movieId={movieId} />
+            <MoviesListCard  movieId={movieId}/>
         </div>
     );
 };

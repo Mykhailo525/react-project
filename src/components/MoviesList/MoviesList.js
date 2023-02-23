@@ -8,14 +8,20 @@ import css from './MoviesList.module.css'
 
 const MoviesList = () => {
 
-    const{movies,total_pages}=useSelector(state => state.movies)
+    const{movies,total_pages,searchedMovies}=useSelector(state => state.movies)
     const dispatch=useDispatch()
     const[query, setQuery]=useSearchParams({page:'1'})
+
+
+    console.log(searchedMovies);
 
 
     useEffect(()=>{
         dispatch(moviesActions.getAll({page:query.get('page')}))
     },[dispatch,query])
+
+
+
 
 
     return (
@@ -27,7 +33,9 @@ const MoviesList = () => {
             </div>
 
             <div className={css.MoviesList}>
-            {movies.map((movie,index)=><MovieInfo key={index+1} movie={movie}/>)}
+
+            {movies.map((movie,index)=><MovieInfo key={movie.id} movie={movie}/>)}
+
             </div>
         </div>
     );

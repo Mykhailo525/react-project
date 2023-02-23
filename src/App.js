@@ -9,18 +9,16 @@ import {MoviesList} from "./components";
 
 const App = () => {
     return (
-        // <Routes>
-        //     <Route path={'/'} element={<MainLayout/>}>
-        //         <Route index element={<MoviesPage/>}/>
-        //         <Route path={'/:movieId'} element={<MovieDataPage/>}/>
-        //
-        //
-        //     </Route>
-        //
-        // </Routes>
-        <div>
-            <MoviesList/>
-        </div>
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<MoviesPage/>}/>
+                <Route path={'/:movieId'} element={<MovieDataPage/>}/>
+
+
+            </Route>
+
+        </Routes>
+
 
     );
 };
