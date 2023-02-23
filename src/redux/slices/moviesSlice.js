@@ -4,6 +4,7 @@ import {moviesService} from "../../services";
 const initialState={
     movies:[],
     page: 1,
+
     selectedMovie:null
 }
 
@@ -13,6 +14,7 @@ const getAll=createAsyncThunk(
         try {
             const {data}=await moviesService.getAll(page)
             return data
+            console.log(data);
         }catch (e) {
             return rejectedWithValue(e.response.data)
         }
