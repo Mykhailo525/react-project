@@ -15,6 +15,7 @@ const MoviesList = () => {
 
     console.log(searchedMovies);
 
+    console.log(movies);
 
     useEffect(()=>{
         dispatch(moviesActions.getAll({page:query.get('page')}))

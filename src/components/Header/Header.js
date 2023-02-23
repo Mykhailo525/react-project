@@ -24,12 +24,13 @@ const Header = () => {
     return (
         <div className={css.Header}>
             <div>
-                <NavLink to={'/'}>GENRES</NavLink>
+                <NavLink to={'/'}>Movies</NavLink>
+
             </div>
 
             <form onSubmit={handleSubmit(submit)}>
                 <input type="text" placeholder={'SearchMovie'} {...register('keyWord')}/>
-                <button>SearchMovie</button>
+                <button onSubmit={()=><NavLink to={'searchedFilms'}></NavLink>}>SearchMovie</button>
             </form>
         </div>
     );
