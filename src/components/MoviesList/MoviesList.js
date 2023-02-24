@@ -6,7 +6,7 @@ import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
 import {useForm} from "react-hook-form";
 import {genresActions} from "../../redux/slices/genresSlice";
-import {GenreInfo} from "../GenreInfo/GenreInfo";
+
 
 
 const MoviesList = () => {
