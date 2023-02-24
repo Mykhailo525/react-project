@@ -12,8 +12,6 @@ const MoviesListCard = ({movieId}) => {
         moviesService.getById(movieId).then(({data})=>setMovie(data))
     },[movieId])
 
-    console.log(movie);
-
 
     return (
         <div>
