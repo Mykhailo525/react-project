@@ -5,7 +5,8 @@ import css from "./MovieInfo.module.css"
 
 const MovieInfo = ({movie}) => {
 
-    const {id, original_title, poster_path,vote_average} = movie
+    const {id, original_title, poster_path,vote_average,genres} = movie
+
 
     const navigate = useNavigate()
 

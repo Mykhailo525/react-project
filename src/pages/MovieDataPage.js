@@ -6,7 +6,6 @@ const MovieDataPage = () => {
 
     const{movieId}=useParams()
 
-
     return (
         <div>
             <MoviesListCard  movieId={movieId}/>
