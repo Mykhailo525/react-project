@@ -4,9 +4,8 @@ import {moviesService} from "../../services";
 const initialState={
     movies:[],
     total_pages:1,
-    searchedMovies:[]
+    keyWord:null
 }
-
 
 
 const getAll=createAsyncThunk(
@@ -36,26 +35,27 @@ const getById=createAsyncThunk(
 );
 
 
-const searchMovie=createAsyncThunk(
-    'moviesSlice/searchMovie',
-    async ({keyWord},thunkAPI)=>{
+const searchMovie = createAsyncThunk(
+    'moviesSlice/getBySearchParams',
+    async ({keyWord,page}, {rejectWithValue})=>{
+
         try {
-            const {data}=await moviesService.searchMovie(keyWord)
+            const {data} = await moviesService.searchMovie(keyWord.keyWord,page)
             return data
         }catch (e) {
-            return thunkAPI.rejectWithValue(e.return.data)
+            return rejectWithValue(e.response.data)
         }
     }
-);
-
-
+)
 
 
 const moviesSlice=createSlice({
     name:'moviesSlice',
     initialState,
     reducers:{
-
+        setKeyWord:(state, action)=>{
+            state.keyWord=action.payload
+        }
     },
     extraReducers:builder =>
         builder
@@ -69,18 +69,20 @@ const moviesSlice=createSlice({
             })
             .addCase(searchMovie.fulfilled, (state, action) => {
                 const {results,total_pages} = action.payload
-                state.searchedMovies = results
+                state.movies = results
                 state.total_pages=total_pages
             })
+
 })
 
 
-const{reducer:moviesReducer}=moviesSlice
+const{reducer:moviesReducer,actions:{setKeyWord}}=moviesSlice
 
 const moviesActions={
     getAll,
     getById,
-    searchMovie
+    searchMovie,
+    setKeyWord
 }
 
 export {

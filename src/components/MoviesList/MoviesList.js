@@ -4,24 +4,38 @@ import {moviesActions} from "../../redux";
 import {useSearchParams} from "react-router-dom";
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
+import {useForm} from "react-hook-form";
 
 
 const MoviesList = () => {
 
-    const{movies,total_pages,searchedMovies}=useSelector(state => state.movies)
+    const{movies,total_pages,keyWord}=useSelector(state => state.movies)
     const dispatch=useDispatch()
+
     const[query, setQuery]=useSearchParams({page:'1'})
 
 
-    console.log(searchedMovies);
+    useEffect(() => {
+        if (!keyWord) {
+            dispatch(moviesActions.getAll({page: query.get('page')}))
 
-    console.log(movies);
+        } else {
+            dispatch(moviesActions.searchMovie({keyWord, page: query.get('page')}))
+        }
+    }, [dispatch, query, keyWord])
 
-    useEffect(()=>{
-        dispatch(moviesActions.getAll({page:query.get('page')}))
-    },[dispatch,query])
 
 
+    const {register, handleSubmit, reset} = useForm({
+        mode: 'all',
+    })
+
+
+    const submit = async (keyWord) => {
+        setQuery(query=>({page:1}))
+        await dispatch(moviesActions.setKeyWord(keyWord))
+        reset()
+    };
 
 
 
@@ -29,9 +43,18 @@ const MoviesList = () => {
         <div>
 
             <div>
-                <button disabled={+query.get('page')===1} onClick={()=>setQuery(query=>({page:+query.get('page')-1}))}>Prev</button>
-                <button disabled={+query.get('page')===total_pages} onClick={()=>setQuery(query=>({page:+query.get('page')+1}))}>Next</button>
+                <button disabled={+query.get('page')===1} onClick={()=>setQuery(query=>({page:+query.get('page')-1}))}>Prev Page</button>
+                <button disabled={+query.get('page')===total_pages} onClick={()=>setQuery(query=>({page:+query.get('page')+1}))}>Next Page</button>
             </div>
+
+
+
+            <form onSubmit={handleSubmit(submit)}>
+                <input type="text" placeholder={'SearchMovie'} {...register('keyWord')}/>
+                <button>SearchMovie</button>
+            </form>
+
+
 
             <div className={css.MoviesList}>
 

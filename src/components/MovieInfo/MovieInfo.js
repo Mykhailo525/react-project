@@ -17,7 +17,9 @@ const MovieInfo = ({movie}) => {
     return (
         <div className={css.Movie}>
             <div className={css.MovieInfo}>
-                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt="" className={'movie__poster'}/>
+                {poster_path &&
+                    <img src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+                                     alt="" className={'movie__poster'}/>}
                 <div>id :{id}</div>
                 <div>vote_average :{vote_average}</div>
                 <div>original_title :{original_title}</div>
