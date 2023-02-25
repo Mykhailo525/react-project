@@ -94,8 +94,54 @@ const MoviesList = () => {
     return (
         <div>
 
+            <div className={css.Wrapper}>
 
-            <div>
+              <div className={css.FormKeyWord}>
+                  <h2>Search Movie</h2>
+            <form onSubmit={handleSubmit(submit)}>
+                <input type="text" placeholder={'Movie name'} {...register('keyWord')}/>
+                <button>Search</button>
+            </form>
+              </div>
+
+
+
+
+
+            <form className={css.Form} onSubmit={handleSubmit(submitGenres)}>
+                <div className={css.InputCheckBox}>
+                {genres.map((genre) => (
+                    <div className={css.FormDiv} key={genre.id}>
+                        <input className={css.CheckBox}
+                            type="checkbox"
+                            value={genre.id}
+                            checked={selectedGenres.includes(genre.id)}
+                            onChange={handleCheckboxChange}
+                        />
+                        <label className={css.Label}>{genre.name}</label>
+                    </div>
+                ))}
+                </div>
+
+
+
+                <div className={css.GenreButtons}>
+                <button>Discover Movies With Checked Genres</button>
+                <button disabled={selectedGenres.length < 1} onClick={() => unChek()}>RESET</button>
+                </div>
+
+
+            </form>
+
+
+            </div>
+
+
+
+
+
+
+            <div className={css.PageButtons}>
                 <button disabled={+query.get('page') === 1}
                         onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Prev Page
                 </button>
@@ -104,33 +150,6 @@ const MoviesList = () => {
                         onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>Next Page
                 </button>
             </div>
-
-
-
-            <form onSubmit={handleSubmit(submit)}>
-                <input type="text" placeholder={'SearchMovie'} {...register('keyWord')}/>
-                <button>SearchMovie</button>
-            </form>
-
-
-
-            <form onSubmit={handleSubmit(submitGenres)}>
-                {genres.map((genre) => (
-                    <div key={genre.id}>
-                        <input
-                            type="checkbox"
-                            value={genre.id}
-                            checked={selectedGenres.includes(genre.id)}
-                            onChange={handleCheckboxChange}
-                        />
-                        <label>{genre.name}</label>
-                    </div>
-                ))}
-
-                <button>Discover Movies With Checked Genres</button>
-
-                <button disabled={selectedGenres.length < 1} onClick={() => unChek()}>RESET</button>
-            </form>
 
 
 

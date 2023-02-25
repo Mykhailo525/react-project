@@ -3,3 +3,65 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.Form{
+    margin-top: 30px;
+    width: 68%;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.FormDiv{
+    width: 150px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Wrapper{
+    width: 100%;
+    height: 300px;
+    display: flex;
+}
+
+
+.FormKeyWord{
+    width: 32%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.PageButtons{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.Label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CheckBox {
+    cursor: pointer;
+}
+
+.InputCheckBox{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.GenreButtons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
