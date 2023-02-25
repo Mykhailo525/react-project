@@ -4,9 +4,11 @@ import {genresReducer} from "./slices/genresSlice";
 
 
 
+
 const rootReducer=combineReducers({
     movies:moviesReducer,
-    genres:genresReducer
+    genres:genresReducer,
+
 
 })
 

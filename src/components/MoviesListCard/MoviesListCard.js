@@ -17,7 +17,7 @@ const MoviesListCard = ({movieId}) => {
         <div>
             {
                 movie && <div>
-                <div>
+                    <div>
                     <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt="" className={'movie_poster'}/>
                     <p>{movie.overview}</p>
                 </div>
