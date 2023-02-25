@@ -93,8 +93,6 @@ const moviesSlice=createSlice({
                 state.total_pages=total_pages
             })
 
-
-
 })
 
 

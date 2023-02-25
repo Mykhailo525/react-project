@@ -16,11 +16,18 @@ const MoviesList = () => {
 
     const{movies,total_pages,keyWord,selGenres}=useSelector(state => state.movies)
 
+
+    console.log(selGenres);
+
+
     const{genres}=useSelector(state => state.genres)
 
     const dispatch=useDispatch()
 
     const [selectedGenres, setSelectedGenres] = useState([]);
+
+    console.log(selectedGenres);
+
 
     const[query, setQuery]=useSearchParams({page:'1'})
 
@@ -66,7 +73,13 @@ const MoviesList = () => {
 
     const submitGenres = () => {
         setQuery(query=>({page:1}))
+
+
+
         dispatch(moviesActions.setSelectedGenres(selectedGenres));
+
+
+
         if(keyWord){
         dispatch(moviesActions.setKeyWord(null))
         }
