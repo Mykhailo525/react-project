@@ -60,3 +60,14 @@
     align-items: center;
     border:2px solid blue
 }
+
+
+.User{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background-color: white;
+    border-radius: 50%;
+}

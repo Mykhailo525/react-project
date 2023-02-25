@@ -1,10 +1,16 @@
 import React from 'react';
+import Badge from 'react-bootstrap/Badge';
+
 
 const Badges = ({genre}) => {
     const{name}=genre
     return (
+
+
         <div>
-            <div> genre : {name}</div>
+            <Badge bg="success">
+                {name}
+            </Badge>{' '}
         </div>
     );
 };

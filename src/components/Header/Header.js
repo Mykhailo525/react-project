@@ -5,7 +5,7 @@ import {moviesActions} from "../../redux";
 import {useDispatch} from "react-redux";
 import {useTheme} from "../../hooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSun, faMoon} from '@fortawesome/free-solid-svg-icons'
+import {faSun, faMoon,faUser} from '@fortawesome/free-solid-svg-icons'
 
 
 const Header = () => {
@@ -41,10 +41,17 @@ const Header = () => {
                 <Link to={'/?page=1'} onClick={()=>{functionGenres();functionKeyWord()}}>Back to Main Page</Link>
             </div>
 
+
+
             <div>
                 <button className={css.switchBtn} onClick={changeTheme}>
                     <span className={theme === 'dark'?css.btnTogleDark:css.btnTogleLight}>{theme === 'light'?<FontAwesomeIcon icon={faSun} />:<FontAwesomeIcon icon={faMoon} />}</span>
                 </button>
+            </div>
+
+
+            <div className={css.User}>
+                <FontAwesomeIcon icon={faUser} />
             </div>
 
         </div>

@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {moviesActions} from "../../redux";
 import {useSearchParams} from "react-router-dom";
+import {useForm} from "react-hook-form";
+
+
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
-import {useForm} from "react-hook-form";
 import {genresActions} from "../../redux/slices/genresSlice";
+import {moviesActions} from "../../redux";
+
+
 
 
 const MoviesList = () => {
@@ -15,10 +19,6 @@ const MoviesList = () => {
     })
 
     const{movies,total_pages,keyWord,selGenres}=useSelector(state => state.movies)
-
-
-    console.log(selGenres);
-
 
     const{genres}=useSelector(state => state.genres)
 
@@ -53,9 +53,6 @@ const MoviesList = () => {
         setQuery(query=>({page:1}))
         setSelectedGenres([])
         dispatch(moviesActions.setSelectedGenres(null))
-
-
-
         await dispatch(moviesActions.setKeyWord(keyWord))
         reset()
     };
@@ -73,13 +70,7 @@ const MoviesList = () => {
 
     const submitGenres = () => {
         setQuery(query=>({page:1}))
-
-
-
         dispatch(moviesActions.setSelectedGenres(selectedGenres));
-
-
-
         if(keyWord){
         dispatch(moviesActions.setKeyWord(null))
         }
@@ -89,6 +80,9 @@ const MoviesList = () => {
     function unChek() {
         setSelectedGenres([])
     }
+
+
+
 
 
     return (
@@ -103,8 +97,6 @@ const MoviesList = () => {
                 <button>Search</button>
             </form>
               </div>
-
-
 
 
 

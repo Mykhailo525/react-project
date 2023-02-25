@@ -27,19 +27,17 @@ const MovieInfo = ({movie}) => {
                     <img src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                                      alt="" className={'movie__poster'}/>}
 
-
-
-                <StarRatings
-                    rating={stars}
-                    starRatedColor="blue"
-                    numberOfStars={5}
-                    name='rating'
-                />
-
-
                 <div>{original_title}</div>
 
             </div>
+            
+
+            <StarRatings
+                rating={stars}
+                starRatedColor="blue"
+                numberOfStars={5}
+                name='rating'
+            />
 
 
         </a>
