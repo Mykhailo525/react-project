@@ -20,12 +20,13 @@ const MovieInfo = ({movie}) => {
 
 
     return (
-        <div className={css.Movie}>
+        <a onClick={() => {functionNavigate()}} className={css.Movie}>
+
             <div className={css.MovieInfo}>
                 {poster_path &&
                     <img src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                                      alt="" className={'movie__poster'}/>}
-                <div>id :{id}</div>
+
 
 
                 <StarRatings
@@ -36,12 +37,12 @@ const MovieInfo = ({movie}) => {
                 />
 
 
-                <div>original_title :{original_title}</div>
+                <div>{original_title}</div>
 
             </div>
 
-            <button onClick={() => {functionNavigate()}}>Movie info</button>
-        </div>
+
+        </a>
     );
 };
 

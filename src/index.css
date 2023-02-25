@@ -12,10 +12,12 @@ body {
 
 html[dataTheme='dark']{
   --background-color: #23242a;
-
+  font-size: 20px;
+  color: #61dafb;
 }
 
 html[dataTheme='light']{
   --background-color: azure;
+   font-size: 20px;
 
 }

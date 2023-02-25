@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {moviesActions} from "../../redux";
-import {Form, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
 import {useForm} from "react-hook-form";

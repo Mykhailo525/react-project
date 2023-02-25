@@ -1,13 +1,19 @@
 .Movie{
     width: 400px;
     height: 500px;
-    border: 1px solid black;
-    background-color: #61dafb;
+    background: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
+
+.Movie:hover {
+    border:1px solid red;
+    cursor: pointer;
+}
+
 
 .MovieInfo{
     display: flex;
@@ -18,5 +24,5 @@
 
 .Movie img{
     width: 300px;
-    height: 300px;
+    height: 350px;
 }
