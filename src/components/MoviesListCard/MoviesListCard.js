@@ -17,6 +17,7 @@ const MoviesListCard = ({movieId}) => {
 
     const navigate=useNavigate()
 
+
     return (
         <div className={css.GeneralBlock}>
             <button onClick={() => navigate(-1)}>Go Back</button>
@@ -59,8 +60,6 @@ const MoviesListCard = ({movieId}) => {
                                     <img src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`} alt=""
                                          className={'movie_backdrop'}/>
                                 </div>
-
-
 
                             </div>
 

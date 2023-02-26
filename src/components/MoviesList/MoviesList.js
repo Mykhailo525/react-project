@@ -105,13 +105,15 @@ const MoviesList = () => {
 
 
             <div className={css.Wrapper}>
-
                 <div className={css.FormKeyWord}>
                     <h2>Search Movie</h2>
+
+
                     <form onSubmit={handleSubmit(submit)}>
                         <input type="text" placeholder={'Movie name'} {...register('keyWord',)}/>
                         <button>Search</button>
                     </form>
+
                 </div>
 
 

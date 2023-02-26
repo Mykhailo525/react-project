@@ -1,5 +1,9 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
+
 import {moviesService} from "../../services";
+
+
 
 const initialState={
     movies:[],
@@ -8,6 +12,9 @@ const initialState={
     selGenres:null,
     loading:null
 }
+
+
+
 
 
 const getAll=createAsyncThunk(
@@ -62,6 +69,9 @@ const searchMovieByGenres = createAsyncThunk(
 )
 
 
+
+
+
 const moviesSlice=createSlice({
     name:'moviesSlice',
     initialState,
@@ -108,7 +118,10 @@ const moviesSlice=createSlice({
 })
 
 
+
 const{reducer:moviesReducer,actions:{setKeyWord,setSelectedGenres, setNullToMovies}}=moviesSlice
+
+
 
 const moviesActions={
     getAll,
@@ -119,6 +132,8 @@ const moviesActions={
     setSelectedGenres,
     setNullToMovies
 }
+
+
 
 export {
     moviesReducer,moviesActions
