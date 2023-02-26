@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
-import {genresActions} from "../../redux/slices/genresSlice";
+import {genresActions} from "../../redux";
 import {moviesActions} from "../../redux";
 
 
@@ -22,6 +22,7 @@ const MoviesList = () => {
 
     const{genres}=useSelector(state => state.genres)
 
+
     const dispatch=useDispatch()
 
     const[query, setQuery]=useSearchParams({page:'1'})
@@ -31,10 +32,16 @@ const MoviesList = () => {
 
     useEffect(() => {
         if (!keyWord && !selGenres) {
+
+            //Якщо не введено ключове слово для пошуку або не обрані жанри то виводяться всі фільми
             dispatch(moviesActions.getAll({page: query.get('page')}))
         } else if(!selGenres) {
+
+            //Якщо не вибрано жанри то виводяться фільми за вказаною назвою
             dispatch(moviesActions.searchMovie({keyWord, page: query.get('page')}))
         }else{
+
+            //Виводяться фільми за вказаним жанром або жанрами
             dispatch(moviesActions.searchMovieByGenres({selGenres,page:query.get('page')}))
         }
     }, [query, keyWord,selGenres])
@@ -46,7 +53,8 @@ const MoviesList = () => {
 
 
 
-
+    //Функція яка відпрацьовує для пошуку по слову (вказую редірект на 1 сторінку бо наприклад коли знаходишся
+    // на 5 сторнці по фільмах "Аватар" і робиш пошук "Plane" то відобразить 5 сторінку "Plane")
 
     const submit =(keyWord) => {
         setQuery(query=>({page:1}))
@@ -58,6 +66,10 @@ const MoviesList = () => {
     };
 
 
+
+
+
+    //Функція записує обрані чекбокси жанрів в масив який потім передаю в moviesSlice
 
     const [selectedGenres, setSelectedGenres] = useState([]);
 
@@ -72,6 +84,8 @@ const MoviesList = () => {
 
 
 
+
+
     const submitGenres = () => {
         setQuery(query=>({page:1}))
         dispatch(moviesActions.setNullToMovies([]))
@@ -81,17 +95,23 @@ const MoviesList = () => {
 
 
 
+
+
+    {/*Функція для обнулення чекбоксів для пошуку жанрів*/}
+
     function unChek() {
         setSelectedGenres([])
     }
 
 
+
+
+    {/*Винесені з кнопок функції для переходу по сторінках*/}
+
     const prevPage=()=>{
         setQuery(query => ({page: +query.get('page') - 1}))
         dispatch(moviesActions.setNullToMovies([]))
     }
-
-
     const nextPage=()=>{
         setQuery(query => ({page: +query.get('page') + 1}))
         dispatch(moviesActions.setNullToMovies([]))
@@ -106,9 +126,13 @@ const MoviesList = () => {
 
             <div className={css.Wrapper}>
                 <div className={css.FormKeyWord}>
+
+
+
+
+                    {/*Форма для пошуку по ключовому слову*/}
+
                     <h2>Search Movie</h2>
-
-
                     <form onSubmit={handleSubmit(submit)}>
                         <input type="text" placeholder={'Movie name'} {...register('keyWord',)}/>
                         <button>Search</button>
@@ -119,6 +143,7 @@ const MoviesList = () => {
 
 
 
+                {/*Форма для пошуку по заданих жанрах*/}
 
             <form className={css.Form} onSubmit={handleSubmit(submitGenres)}>
                 <div className={css.InputCheckBox}>
@@ -161,6 +186,8 @@ const MoviesList = () => {
 
 
 
+            {/*Перевірка чи є фільми по заданих жанрах або ключовому слову */}
+
             {(!loading && movies.length===0) &&
                 <div className={css.AlertNotFound}>
                     <p>No movies found for your request, try something else</p>
@@ -169,6 +196,8 @@ const MoviesList = () => {
 
 
 
+
+            {/*Кнопки для переходу по сторінках */}
 
             {
                 (!loading && movies.length!==0)&&

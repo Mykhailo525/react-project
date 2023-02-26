@@ -8,6 +8,7 @@ import {moviesService} from "../../services";
 const initialState={
     movies:[],
     total_pages:1,
+    total_pages_main_page:1,
     keyWord:null,
     selGenres:null,
     loading:null
@@ -92,6 +93,7 @@ const moviesSlice=createSlice({
                 const {results,total_pages} = action.payload
                 state.movies = results
                 state.total_pages=total_pages
+                state.total_pages_main_page=total_pages
                 state.loading=false
             })
             .addCase(getById.fulfilled, (state, action) => {
