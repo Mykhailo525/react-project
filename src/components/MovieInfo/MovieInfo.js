@@ -14,6 +14,7 @@ const MovieInfo = ({movie}) => {
 
     const navigate = useNavigate()
 
+
     const functionNavigate=()=>{
         navigate(id.toString())
     }

@@ -4,6 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 
 
+
 import {MovieInfo} from "../MovieInfo/MovieInfo";
 import css from './MoviesList.module.css'
 import {genresActions} from "../../redux/slices/genresSlice";
@@ -18,16 +19,14 @@ const MoviesList = () => {
         mode: 'all',
     })
 
-    const{movies,total_pages,keyWord,selGenres}=useSelector(state => state.movies)
+    const{movies,total_pages,keyWord,selGenres,loading}=useSelector(state => state.movies)
+
 
     const{genres}=useSelector(state => state.genres)
 
     const dispatch=useDispatch()
 
     const [selectedGenres, setSelectedGenres] = useState([]);
-
-    console.log(selectedGenres);
-
 
     const[query, setQuery]=useSearchParams({page:'1'})
 
@@ -37,7 +36,7 @@ const MoviesList = () => {
             dispatch(moviesActions.getAll({page: query.get('page')}))
         } else if(!selGenres) {
             dispatch(moviesActions.searchMovie({keyWord, page: query.get('page')}))
-        } else {
+        }else{
             dispatch(moviesActions.searchMovieByGenres({selGenres,page:query.get('page')}))
         }
     }, [dispatch, query, keyWord,selGenres])
@@ -83,8 +82,6 @@ const MoviesList = () => {
 
 
 
-
-
     return (
         <div>
 
@@ -118,7 +115,7 @@ const MoviesList = () => {
 
 
                 <div className={css.GenreButtons}>
-                <button>Discover Movies With Checked Genres</button>
+                <button disabled={selectedGenres.length===0}>Discover Movies With Checked Genres</button>
                 <button disabled={selectedGenres.length < 1} onClick={() => unChek()}>RESET</button>
                 </div>
 
@@ -129,26 +126,27 @@ const MoviesList = () => {
             </div>
 
 
-
-
-
-
             <div className={css.PageButtons}>
+
                 <button disabled={+query.get('page') === 1}
                         onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Prev Page
                 </button>
 
-                <button disabled={+query.get('page') === total_pages}
+                <button disabled={+query.get('page') === total_pages || total_pages<2}
                         onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>Next Page
                 </button>
             </div>
 
+            {loading && <h1>Loading...............</h1>}
+
+            <div className={css.MoviesList}>
+                {movies.length>0 && movies.map((movie,index) => <MovieInfo key={index+1} movie={movie}/>)}
+            </div>
 
 
             <div className={css.MoviesList}>
-                {movies.map((movie) => <MovieInfo key={movie.id} movie={movie}/>)}
+                {(!loading && movies.length===0) && <div className={css.AlertNotFound}><p>No movies found for your request, try something else</p></div>}
             </div>
-
 
         </div>
     );

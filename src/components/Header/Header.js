@@ -38,7 +38,7 @@ const Header = () => {
     return (
         <div className={css.Header}>
             <div>
-                <Link to={'/?page=1'} onClick={()=>{functionGenres();functionKeyWord()}}>Back to Main Page</Link>
+                <Link to={'/?page=1'} onClick={()=>{functionGenres();functionKeyWord()}}>Back to Popular Movies</Link>
             </div>
 
 
