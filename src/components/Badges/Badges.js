@@ -1,16 +1,13 @@
 import React from 'react';
-import Badge from 'react-bootstrap/Badge';
+import css from "./Badges.module.css"
 
 
 const Badges = ({genre}) => {
+
     const{name}=genre
     return (
-
-
-        <div>
-            <Badge bg="success">
-                {name}
-            </Badge>{' '}
+        <div className={css.Badge}>
+            {name}
         </div>
     );
 };

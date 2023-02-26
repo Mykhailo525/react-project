@@ -1,16 +1,16 @@
 .Movie{
-    width: 400px;
-    height: 500px;
+    width: 275px;
+    height: 450px;
     background: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    margin: 10px 10px 10px 10px;
 }
 
 .Movie:hover {
-    border:1px solid red;
+    border:1px solid #d20808;
     cursor: pointer;
 }
 
@@ -23,6 +23,23 @@
 }
 
 .Movie img{
-    width: 300px;
-    height: 350px;
+    width: 200px;
+    height: 250px;
 }
+
+.Stars{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.Title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    padding-left: 10px;
+}
+

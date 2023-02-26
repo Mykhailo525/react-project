@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import css from "./Header.module.css"
 import {Link} from "react-router-dom";
 import {moviesActions} from "../../redux";
@@ -26,19 +25,18 @@ const Header = () => {
      const dispatch=useDispatch()
 
 
-    const functionKeyWord=()=>{
+    const functionGoToPopularMovies=()=>{
         dispatch(moviesActions.setKeyWord(null))
-    }
-
-    const functionGenres=()=>{
         dispatch(moviesActions.setSelectedGenres(null))
+        dispatch(moviesActions.setNullToMovies([]))
+
     }
 
 
     return (
         <div className={css.Header}>
             <div>
-                <Link to={'/?page=1'} onClick={()=>{functionGenres();functionKeyWord()}}>Back to Popular Movies</Link>
+                <Link  to={'/?page=1'} onClick={()=>functionGoToPopularMovies()}>Back to Popular Movies</Link>
             </div>
 
 

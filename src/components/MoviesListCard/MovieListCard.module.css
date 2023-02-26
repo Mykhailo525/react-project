@@ -1,3 +1,17 @@
-.Badge{
+.GeneralBlock button{
+    cursor: pointer;
+}
 
+.PosterAndAnotherItems{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.Badges{
+    display: flex;
+}
+
+.BadgesAndAnother{
+    margin: 25px;
 }

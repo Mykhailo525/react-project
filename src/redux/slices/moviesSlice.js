@@ -71,6 +71,9 @@ const moviesSlice=createSlice({
         },
         setSelectedGenres:(state, action)=>{
             state.selGenres=action.payload
+        },
+        setNullToMovies:(state, action)=>{
+            state.movies=action.payload
         }
     },
     extraReducers:builder =>
@@ -105,7 +108,7 @@ const moviesSlice=createSlice({
 })
 
 
-const{reducer:moviesReducer,actions:{setKeyWord,setSelectedGenres}}=moviesSlice
+const{reducer:moviesReducer,actions:{setKeyWord,setSelectedGenres, setNullToMovies}}=moviesSlice
 
 const moviesActions={
     getAll,
@@ -113,7 +116,8 @@ const moviesActions={
     searchMovie,
     setKeyWord,
     searchMovieByGenres,
-    setSelectedGenres
+    setSelectedGenres,
+    setNullToMovies
 }
 
 export {
