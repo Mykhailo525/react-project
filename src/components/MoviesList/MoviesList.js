@@ -65,7 +65,9 @@ const MoviesList = () => {
         setQuery(query=>({page:1}))
         setSelectedGenres([])
         dispatch(moviesActions.setNullToMovies([]))
+        if(selGenres){
         dispatch(moviesActions.setSelectedGenres(null))
+        }
         dispatch(moviesActions.setKeyWord(keyWord))
         reset()
     };
@@ -90,14 +92,16 @@ const MoviesList = () => {
 
 
     //Функція яка відпрацьовує для пошуку по жанрах
-    //ОБНУЛЯЄ МАСИВ ФІЛЬМІВ ЩОБ ЗАПИСАТИ В НЬОГО ФІЛЬМИ ПО ЗАДАНОМУ СЛОВУ
+    //ОБНУЛЯЄ МАСИВ ФІЛЬМІВ ЩОБ ЗАПИСАТИ В НЬОГО ФІЛЬМИ ПО ЗАДАНИХ ЖАНРАХ
     //Обнуляє раніше задане слово (якщо воно було)
     //Передає обрані жанри в moviesSlice
 
     const submitGenres = () => {
         setQuery(query=>({page:1}))
         dispatch(moviesActions.setNullToMovies([]))
+        if(keyWord){
         dispatch(moviesActions.setKeyWord(null))
+        }
         dispatch(moviesActions.setSelectedGenres(selectedGenres));
     };
 
