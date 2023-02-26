@@ -145,7 +145,7 @@ const MoviesList = () => {
 
 
             <div className={css.MoviesList}>
-                {(!loading && movies.length===0) && <div className={css.AlertNotFound}><p>No movies found for your request, try something else</p></div>}
+                {(!loading && total_pages<1) && <div className={css.AlertNotFound}><p>No movies found for your request, try something else</p></div>}
             </div>
 
         </div>
